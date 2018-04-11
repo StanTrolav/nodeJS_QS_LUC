@@ -1,37 +1,33 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/StanTrolav/nodeJS_QS_LUC/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# nodeJS_QS_LUC
+Node JS Qlik Sense License Usage Center
+Модуль предназначен для доставки информации об использовании пользовательских лицензий Qlik Sense. 
+# Особенности
+- Модуль nodeJS_QS_LUC устанавливается в качестве службы.
+- Сбор информации с серверов осуществляется по сертификатам
+- Информация предоставляется после получения SOAP вызова с заголовком [soapaction], содержащим команду "/getAccountList"
+# Подготовка
+Для работы модуля необходимо произвести выгрузку сертификатов Qlik Sense с каждого сервера, с которого необходимо получать информацию. Выгрузка сертификатов производится через QMC:
+1. Войдите в QMC Sense Server
+2. Start -> CONFIGURE SYSTEM -> Certificates
+3. Add machine name: укажите полное имя сервера "example.ca.sbrf.ru"
+4. Export file format for certificates: Установите PEM-Format
+5. Нажмите кнопку "Export certificates"
+6. Заберите сертификаты с сервера Sense и поместите их в папку .\certificats\<Server Full Name> после установки модуля
+# Установка модуля
+1. Распокавать содержимое архива в папку D:\nodeJS_QS_LUC
+2. Получить сертификаты серверов Sense, участвующих в мониторинге
+3. Прописать в файле QlikSense_LicenseUsageCenter.js список серверов Sense и указать порт по которому будет доступен сервис:
+```sh
+hostsToCheck = 'sbt-ouiefs-0104.ca.sbrf.ru, sbt-gas-0018.ca.sbrf.ru, sbt-qs-001.ca.sbrf.ru';
+ServicePort = 8888;
 ```
+4. Поместить сертификаты формата PEM в папку \certificats. При этом каждый набор сертификатов сервера Sense должен быть помещён в подпапку с именем этого сервера Sense.
+5. Запустить с правами администратора файл InstallService.bat
+6. Убедиться, что служба nodeJS_QS_LUC в состоянии "Running"
+7. Проверить работу сервиса, выполнив тестовое обращение
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**Разработано СБТ ДРАРиСС ЦК BI Москва**
 
-### Jekyll Themes
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/StanTrolav/nodeJS_QS_LUC/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+   [node.js]: <http://nodejs.org>
