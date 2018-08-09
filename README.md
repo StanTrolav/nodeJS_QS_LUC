@@ -27,7 +27,3 @@ ServicePort = 8888;
 7. Проверить работу сервиса, выполнив тестовое обращение
 
 **Разработано СБТ ДРАРиСС ЦК BI Москва**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
-
-   [node.js]: <http://nodejs.org>
